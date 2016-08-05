@@ -69,6 +69,10 @@
     <Compile Include="Migrations\201608042334457_InitialCreate.Designer.cs">
       <DependentUpon>201608042334457_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608050826584_Posts_001.cs" />
+    <Compile Include="Migrations\201608050826584_Posts_001.Designer.cs">
+      <DependentUpon>201608050826584_Posts_001.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CommentRepository.cs" />
@@ -89,6 +93,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201608042334457_InitialCreate.resx">
       <DependentUpon>201608042334457_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608050826584_Posts_001.resx">
+      <DependentUpon>201608050826584_Posts_001.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

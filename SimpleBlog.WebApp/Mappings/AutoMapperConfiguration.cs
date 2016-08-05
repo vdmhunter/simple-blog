@@ -9,7 +9,7 @@ namespace SimpleBlog.WebApp.Mappings
             Mapper.Initialize(cfg =>
             {
                 cfg.AddProfile<DomainToViewModelMappingProfile>();
-                cfg.AddProfile<ViewModelToDomainMappingProfile>();
+                //cfg.AddProfile<ViewModelToDomainMappingProfile>();
             });
 
             Mapper.AssertConfigurationIsValid();

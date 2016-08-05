@@ -322,6 +322,15 @@ namespace SimpleBlog.WebApp.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        // GET: /Account/GetUserNameById
+        [AllowAnonymous]
+        public ActionResult GetUserNameById(string appUserId)
+        {
+            var appUser = UserManager.FindById(appUserId);
+
+            return Content($"{appUser.FirstName} {appUser.LastName}");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -1,5 +1,7 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using SimpleBlog.Model;
+using SimpleBlog.WebApp.ViewModels;
 
 namespace SimpleBlog.WebApp.Mappings
 {
@@ -7,15 +9,11 @@ namespace SimpleBlog.WebApp.Mappings
     {
         public override string ProfileName => "ViewModelToDomainMappings";
 
-        public ViewModelToDomainMappingProfile()
+        [Obsolete]
+        protected override void Configure()
         {
-            //Mapper.Initialize(
-            //    cfg => cfg.CreateMap<ManageUsersViewModel, SpotLightUser>()
-            //        .ForMember(slu => slu.ApplicationUserId, map => map.MapFrom(vm => vm.Id))
-            //        .ForMember(slu => slu.FirstName, map => map.MapFrom(vm => vm.FirstName))
-            //        .ForMember(slu => slu.LastName, map => map.MapFrom(vm => vm.LastName))
-            //        .ForMember(slu => slu.DomainLogin, map => map.MapFrom(vm => vm.Login))
-            //    );
+            CreateMap<PostViewModel, Post>();
+            CreateMap<CommentViewModel, Comment>();
         }
     }
 }

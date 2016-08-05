@@ -8,8 +8,6 @@ namespace SimpleBlog.Model
     {
         public int Id { get; set; }
 
-        public int PostId { get; set; }
-
         [Column(TypeName = "ntext")]
         public string Text { get; set; }
 
@@ -20,6 +18,8 @@ namespace SimpleBlog.Model
         [StringLength(128)]
         public string AuthorId { get; set; }
 
-        public virtual Post Post { get; set; }
+        public int PostId { get; set; }
+
+        public Post Post { get; set; }
     }
 }

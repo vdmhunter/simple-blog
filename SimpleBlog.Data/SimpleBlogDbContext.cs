@@ -9,8 +9,8 @@ namespace SimpleBlog.Data
     {
         public SimpleBlogDbContext() : base("DefaultConnection", throwIfV1Schema: false)
         {
-            Configuration.ProxyCreationEnabled = false;
-            Configuration.LazyLoadingEnabled = false;
+            //Configuration.ProxyCreationEnabled = false;
+            //Configuration.LazyLoadingEnabled = false;
         }
 
         public virtual DbSet<Comment> Comments { get; set; }

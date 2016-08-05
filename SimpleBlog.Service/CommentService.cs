@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Security.Policy;
 using SimpleBlog.Data.Infrastructure;
 using SimpleBlog.Data.Repositories;
@@ -17,11 +18,13 @@ namespace SimpleBlog.Service
     public class CommentService : ICommentService
     {
         private readonly ICommentRepository _commentsRepository;
+        private readonly IPostRepository _postsRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public CommentService(ICommentRepository commentsRepository, IUnitOfWork unitOfWork)
+        public CommentService(ICommentRepository commentsRepository, IPostRepository postsRepository, IUnitOfWork unitOfWork)
         {
             _commentsRepository = commentsRepository;
+            _postsRepository = postsRepository;
             _unitOfWork = unitOfWork;
         }
 

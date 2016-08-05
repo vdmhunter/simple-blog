@@ -1,0 +1,60 @@
+﻿@model SimpleBlog.WebApp.ViewModels.PostViewModel
+
+@{
+    ViewBag.Title = "Post Details";
+}
+
+<div class="row" style="margin-top: 32px">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-sm-9">
+                <h3 class="pull-left" style="margin-top: 0px;">
+                    <a href="">@Model.Title</a>
+                </h3>
+            </div>
+            <div class="col-sm-3">
+                <h5 class="pull-right" style="margin-top: 0px;">
+                    <i class="fa fa-calendar"></i> Posted on @Model.Date
+                </h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <i class="fa fa-user" style="margin-bottom: 7px;"></i> <em>by @{ Html.RenderAction("GetUserNameById", "Account", new {appUserId = Model.AuthorId});}</em>
+            </div>
+        </div>
+
+        @Html.Raw(Model.Text)
+
+        <a href="#comments"></a>
+        <div class="row" style="margin-top: 16px">
+            <div class="col-sm-12">
+                @if (Request.IsAuthenticated)
+                {
+                    <hr />
+                    <div class="well">
+                        <h4><i class="fa fa-paper-plane-o"></i> Leave a Comment:</h4>
+                        @using (Html.BeginForm("Save", "Comment", new { postId = Model.Id }, FormMethod.Post, new { role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary("", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.TextArea("commentText", null, new { @class = "form-control", rows = "4", style = "width: 100%; max-width: 100%;" })
+                            </div>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-reply"></i> Submit</button>
+                        }
+                    </div>
+                }              
+                @foreach (var comment in Model.Comments)
+                {
+                    <h4>
+                        <i class="fa fa-comment"></i> @{ Html.RenderAction("GetUserNameById", "Account", new {appUserId = comment.AuthorId}); } says:
+                        <small> on @comment.Date</small>
+                    </h4>
+                    <p>@Html.Raw(comment.Text)</p>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
